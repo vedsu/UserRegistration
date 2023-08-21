@@ -33,6 +33,7 @@ def user():
         username = st.text_input("Enter Handler name")
         emailid = st.text_input("Enter Email id")
         passwordid = st.text_input("Enter Password")
+        imapserver = st.text_input("Enter imap server")
         status = st.radio("Choose Status", ["Active", "Inactive"])
         if st.button("Submit"):
             user_data = {
@@ -40,13 +41,17 @@ def user():
                 "emailid": emailid,
                 "password": passwordid,
                 "status": status,
+                "imapserver":imapserver,
                 "inbox":"",
                 "spam":"",
                 "lastupdated":""
             }
             # Perform the insert operation
-            collection_usersdetail.insert_one(user_data)
-            st.success("User details submitted successfully!")
+            try:
+               collection_usersdetail.insert_one(user_data)
+               st.success("User details submitted successfully!")
+            except:
+               st.warning("Submission unsuccessfully!")
             time.sleep(1)  # Pause for 1 second
             st.experimental_rerun()  # Trigger a rerun
 
