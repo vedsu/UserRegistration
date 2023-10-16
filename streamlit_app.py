@@ -29,7 +29,7 @@ db= client['EmailDatabase']
 collection_usersdetail = db['Users']
 
 def user():
-    # with st.sidebar.expander("Enter user details"): 
+    with st.sidebar.expander("Enter user details"): 
         st.write("----------------------------------")
         username = st.text_input("Enter Handler name")
         emailid = st.text_input("Enter Email id")
@@ -62,10 +62,10 @@ def user():
     
 
 def display():
-    if not hasattr(st.session_state, "button_states"):
-        st.session_state.button_states = {}
+    # if not hasattr(st.session_state, "button_states"):
+    #     st.session_state.button_states = {}
 
-    with st.expander("Check existing users"):
+    # with st.expander("Check existing users"):
         query = {}
         projection = {"emailid": 1, "username": 1, "status": 1,"password": 1,"imapserver":1 , "lastupdated":1, "inbox":1, "spam":1 ,"_id": 1}
         results = collection_usersdetail.find(query, projection)
