@@ -29,7 +29,7 @@ db= client['EmailDatabase']
 collection_usersdetail = db['Users']
 
 def user():
-    with st.sidebar.expander("Enter user details"): 
+    # with st.sidebar.expander("Enter user details"): 
         st.write("----------------------------------")
         username = st.text_input("Enter Handler name")
         emailid = st.text_input("Enter Email id")
